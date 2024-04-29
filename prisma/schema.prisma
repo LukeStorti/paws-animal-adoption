@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  directUrl         = env("DIRECT_URL")
+}
+
+model User{
+  id             String @id @unique
+
+  email          String
+  firstName      String
+  lastName       String
+  profileImage   String?
+  isNPO          Boolean? @default(false)
+
+  Pet             Pet[]
+  Favorite        Favorite[]
+}
+
+model Pet{
+  id              String @id @default(uuid())
+
+  title           String?
+  description     String?
+  breed           String?
+  age             Int?
+  photo           String?
+  categoryName    String?
+  location        String?
+  Favorite        Favorite[]
+
+  goodWithOtherAnimals  Boolean @default(false)
+  goodWithFamily        Boolean @default(false)
+  needsSpace            Boolean @default(false)
+
+  addedCateogry     Boolean @default(false)
+  addedDescription  Boolean @default(false)
+  addedLocation     Boolean @default(false)
+
+  createdAt     DateTime  @default(now())
+  User          User?     @relation(fields: [userId],references: [id])
+  userId        String?
+  }
+
+  model Favorite{
+  id    String      @id @default(uuid())
+
+  User        User?     @relation(fields: [userId], references: [id])
+  userId      String?
+  Pet         Pet?      @relation(fields: [petId], references: [id])
+  petId       String?
+
+  createdAt   DateTime  @default(now())
+  }
