@@ -32,7 +32,6 @@ const ListingCard = ({
   pathName,
   deletePet,
 }: ListingCardProps) => {
-  console.log(deletePet);
   return (
     <div className="flex flex-col">
       <div className="relative h-72 ">

@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
-const PetDetailLoading = () => {
+const ProfileLoading = () => {
   return (
     <div className="container mx-auto mt-10">
       <div className="flex flex-col md:flex-row items-start justify-between gap-8">
@@ -19,4 +19,4 @@ const PetDetailLoading = () => {
   );
 };
 
-export default PetDetailLoading;
+export default ProfileLoading;

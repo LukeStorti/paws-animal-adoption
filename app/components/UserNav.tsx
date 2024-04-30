@@ -50,6 +50,16 @@ const UserNav = async () => {
                   </form>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
+                  <Link href={`/profile/${user.id}`} className="w-full">
+                    My Profile
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="/inbox" className="w-full">
+                    Inbox
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
                   <Link href="/my-pets" className="w-full">
                     My Pets
                   </Link>
@@ -60,6 +70,11 @@ const UserNav = async () => {
                 <DropdownMenuItem>
                   <Link href={`/create/${user?.id}/register`} className="w-full">
                     Register as NPO
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="/inbox" className="w-full">
+                    Inbox
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>

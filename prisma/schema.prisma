@@ -23,6 +23,8 @@ model User{
   profileImage   String?
   isNPO          Boolean? @default(false)
 
+  description     String?
+
   Pet             Pet[]
   Favorite        Favorite[]
 }

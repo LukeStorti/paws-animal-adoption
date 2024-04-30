@@ -168,3 +168,28 @@ export async function deletePetFromDb(formData: FormData) {
 
   revalidatePath(pathName);
 }
+
+export async function updateProfile(formData: FormData) {
+  const userId = formData.get("userId") as string;
+  const name = formData.get("title") as string;
+  const description = formData.get("description") as string;
+  const imageFile = formData.get("photo") as File;
+
+  const { data: imageData } = await supabase.storage
+    .from("images")
+    .upload(`${imageFile.name}-${new Date()}`, imageFile, {
+      cacheControl: "2592000",
+      contentType: "image/png",
+    });
+  const data = await prisma.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      description: description,
+      firstName: name,
+      profileImage: imageData?.path,
+    },
+  });
+  return redirect(`/profile/${userId}`);
+}
