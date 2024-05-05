@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import SkeletonCard from "./components/SkeletonCard";
 import NoPets from "./components/NoPets";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { unstable_noStore as noStore } from "next/cache";
 
 async function getPets({
   searchParams,
@@ -13,6 +14,7 @@ async function getPets({
   userId: string | undefined;
   searchParams?: { filter?: string };
 }) {
+  noStore();
   const pets = await prisma.pet.findMany({
     where: {
       addedCateogry: true,
