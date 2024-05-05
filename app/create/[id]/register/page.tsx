@@ -23,10 +23,17 @@ const RegisterNPORoute = ({ params }: { params: { id: string } }) => {
         </p>
       </div>
       <form action={registerNPOwithId}>
+        <input type="hidden" />
         <div className="mx-auto w-3/5 mt-10 flex flex-col gap-y-5 mb-36">
           <div className="flex flex-col gap-y-2">
             <Label htmlFor="NPO">NPO Registration No.</Label>
-            <Input name="title" required placeholder="Eg: 111-111 NPO " type="text" id="NPO" />
+            <Input
+              name="title"
+              required
+              placeholder="Enter your NPO registration number"
+              type="text"
+              id="NPO"
+            />
           </div>
         </div>
         <BottomBar />

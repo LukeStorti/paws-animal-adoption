@@ -63,11 +63,7 @@ const ListingCard = ({
 
         {deletePet && (
           <div className="z-20 absolute top-2 left-2">
-            <form action={deletePetFromDb}>
-              <input type="hidden" name="petId" value={petId} />
-              <input type="hidden" name="pathName" value={pathName} />
-              <DeletePet />
-            </form>
+            <DeletePet petId={petId} pathName={pathName} />
           </div>
         )}
       </div>

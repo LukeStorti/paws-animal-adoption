@@ -1,42 +1,43 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Loader2, Trash2 } from "lucide-react";
-import { useFormStatus } from "react-dom";
+import { Trash2 } from "lucide-react";
 
-const DeletePet = () => {
-  const { pending } = useFormStatus();
+import { deletePetFromDb } from "../actions";
+
+const DeletePet = ({ petId, pathName }: { petId: string; pathName: string }) => {
   return (
     <>
-      {pending ? (
-        <Button variant="outline" size="icon" disabled className="bg-primary-foreground">
-          <Loader2 className="h-4 w-4 animate-spin text-primary" />
-        </Button>
-      ) : (
-        <Dialog>
-          <DialogTrigger>
-            <div className="bg-primary-foreground w-10 h-10 rounded-lg flex items-center justify-center">
-              <Trash2 className="w-4 h-4" />
-            </div>
-          </DialogTrigger>
-          <DialogContent>
+      <Dialog>
+        <DialogTrigger>
+          <div className="bg-primary-foreground w-10 h-10 rounded-lg flex items-center justify-center">
+            <Trash2 className="w-4 h-4" />
+          </div>
+        </DialogTrigger>
+        <DialogContent>
+          <form action={deletePetFromDb}>
+            <input type="hidden" name="petId" value={petId} />
+            <input type="hidden" name="pathName" value={pathName} />
             <DialogHeader>
               <DialogTitle>Are you sure you want to remove this pet?</DialogTitle>
               <DialogDescription>This action is permant</DialogDescription>
             </DialogHeader>
-            <Button variant="default" type="submit">
-              Confirm
-            </Button>
-          </DialogContent>
-        </Dialog>
-      )}
+
+            <DialogClose asChild>
+              <Button type="submit" size="lg">
+                Delete
+              </Button>
+            </DialogClose>
+          </form>
+        </DialogContent>
+      </Dialog>
     </>
   );
 };
