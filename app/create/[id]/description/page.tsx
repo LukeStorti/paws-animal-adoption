@@ -14,8 +14,8 @@ const DescriptionRoute = ({ params }: { params: { id: string } }) => {
           Paint a Picture of Your Pal!
         </h2>
         <p className="text-muted-foreground tracking-tight transition-colors">
-          Give us all the details! From fluffy fur to quirky habits, let's make sure your pet steals
-          hearts.
+          Give us all the details! From fluffy fur to quirky habits, let&apos;s make sure your pet
+          steals hearts.
         </p>
       </div>
 
