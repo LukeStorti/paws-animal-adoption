@@ -19,11 +19,19 @@ const RegisterNPORoute = ({ params }: { params: { id: string } }) => {
           with loving families.
         </p>
         <p className="text-muted-foreground tracking-tight transition-colors">
+          Email{" "}
+          <a href="mailto:lukestorti@gmail.com" className="text-primary">
+            lukestorti@gmail.com
+          </a>{" "}
+          with your NPO Registration number.
+        </p>
+        <p className="text-muted-foreground tracking-tight transition-colors">
           Once your NPO Registration has been validated, you will be able to post listings.
         </p>
       </div>
-      <form action={registerNPOwithId}>
-        <input type="hidden" />
+
+      {/* <form action={registerNPOwithId}>
+        <input type="hidden" name="NPOno" id="NPOno" />
         <div className="mx-auto w-3/5 mt-10 flex flex-col gap-y-5 mb-36">
           <div className="flex flex-col gap-y-2">
             <Label htmlFor="NPO">NPO Registration No.</Label>
@@ -37,7 +45,7 @@ const RegisterNPORoute = ({ params }: { params: { id: string } }) => {
           </div>
         </div>
         <BottomBar />
-      </form>
+      </form> */}
     </>
   );
 };

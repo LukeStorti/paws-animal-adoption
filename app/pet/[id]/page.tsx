@@ -1,9 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import prisma from "@/lib/db";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+
 import Image from "next/image";
 import Link from "next/link";
 import { unstable_noStore as noStore } from "next/cache";
@@ -37,8 +36,7 @@ async function getData(petId: string) {
 
 const PetRoute = async ({ params }: { params: { id: string } }) => {
   const data = await getData(params.id);
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
+
   return (
     <div className="container mx-auto mt-10">
       <div className="flex flex-col md:flex-row items-start justify-between gap-8">
@@ -113,16 +111,6 @@ const PetRoute = async ({ params }: { params: { id: string } }) => {
       <Separator className="my-6" />
       <div className="flex items-center mt-10">
         <Link href={`/profile/${data?.User?.id}`} className="flex items-center space-x-2">
-          <Avatar className="hidden lg:block">
-            <AvatarImage
-              src={
-                user?.picture ??
-                `https://cdmvyaomzbmsumofwkhj.supabase.co/storage/v1/object/public/images/${data?.User?.profileImage}`
-              }
-            />
-            <AvatarFallback>PW</AvatarFallback>
-          </Avatar>
-
           <h3 className="ml-2 text-muted-foreground font-medium">
             Listed by {data?.User?.firstName}
           </h3>

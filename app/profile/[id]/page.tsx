@@ -84,27 +84,31 @@ const ProfilePage = async ({ params }: { params: { id: string } }) => {
         </div>
       </div>
       <Separator className="my-8" />
-      <h3 className="text-3xl font-semibold tracking-tight transition-colors mb-10 mt-10">
-        Your Pets
-      </h3>
-      <div className="grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8 mb-8">
-        {pets.map((item) => (
-          <ListingCard
-            key={item.id}
-            image={item.photo as string}
-            title={item.title as string}
-            breed={item.breed as string}
-            age={item.age as number}
-            location={item.location as string}
-            userId={user?.id}
-            favoriteId={item.Favorite[0]?.id}
-            isInFavoriteList={item.Favorite.length > 0 ? true : false}
-            petId={item.id}
-            pathName="/"
-            deletePet={false}
-          />
-        ))}
-      </div>
+      {user && (
+        <>
+          <h3 className="text-3xl font-semibold tracking-tight transition-colors mb-10 mt-10">
+            Your Pets
+          </h3>
+          <div className="grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8 mb-8">
+            {pets.map((item) => (
+              <ListingCard
+                key={item.id}
+                image={item.photo as string}
+                title={item.title as string}
+                breed={item.breed as string}
+                age={item.age as number}
+                location={item.location as string}
+                userId={user?.id}
+                favoriteId={item.Favorite[0]?.id}
+                isInFavoriteList={item.Favorite.length > 0 ? true : false}
+                petId={item.id}
+                pathName="/"
+                deletePet={false}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
