@@ -31,5 +31,5 @@ export async function GET() {
     });
   }
 
-  return NextResponse.redirect("https://paws-animal-adoption-zz8q.vercel.app");
+  return NextResponse.redirect("https://paws-animal-adoption.vercel.app/");
 }
