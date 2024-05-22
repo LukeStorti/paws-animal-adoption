@@ -55,9 +55,6 @@ const ProfilePage = async ({ params }: { params: { id: string } }) => {
   const pets = await getPets(params.id);
   return (
     <div className="container mx-auto px-5 lg:px-10 mt-10">
-      <h2 className="text-3xl font-semibold tracking-tight transition-colors mb-10">
-        Your profile
-      </h2>
       <div className="flex flex-col md:flex-row items-start justify-between gap-8 mb-8">
         <div className="relative h-72 w-72 lg:h-[550px] lg:w-[550px]">
           <Image
